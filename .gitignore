@@ -1,0 +1,6 @@
+*.json
+*.iml
+*.xml
+.idea/
+data/
+/**/.idea/*
