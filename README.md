@@ -7,8 +7,7 @@ categorize them into categories. Therefore, emergency services can prioritize th
 The API and frontend developed gives a glimpse of the data contained in a database and it provides the category predictions for
 emergency messages as shown below.
 
-<img src='media/project_cover.gif' width="800" height="500" />
-<br>
+
 
 
 ## Project Requirements
