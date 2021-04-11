@@ -1,6 +1,7 @@
 ## Project Summary
-A Music Streaming Startup would like to analyse the user behaviour around the activity on their music streaming app.
-This project focuses on Extracting-Transforming-Loading (ETL) process and data modeling for the songs data in a star schema. 
+A Music Streaming Startup would like to get insight of the users activity on their music streaming app and get data insights to improve their services .
+This project focuses on Extracting-Transforming-Loading (ETL) process and data modeling for the songs data in a star schema. The project will allow 
+to help as well to bring answers to business questions (i.e, most listened songs etc.).
 
 ### Datasets
 
@@ -133,7 +134,50 @@ users (
 );
 ```
 
-## Description
+## Development
+The project was developed in 4 main steps :
+
+1. Datasets understanding: It is important understand the logs of user activity, and the songs catalog. This will allow to design the star schema design
+2. Design of the ETL: This includes the creation of the tables (fact and dimension) and their contraints
+3. ETL design by cleaning and transforming teh data, the details of the transformations can be found at the etl.ipynb and the 
+sql_queries.py to create the tables and database. 
+4. Have a star schema, where we can start to get some data insights.
+
+## Example Business Questions
+After having the star schema, we can now answer some business questions, please notice that here I cover few examples, but a data analyst may found more usefol data insights.
+
+- Example query to combine all the 5 tables:
+
+```sql
+   SELECT * \
+   FROM songplays JOIN songs ON songplays.song_id = songs.song_id \
+   JOIN artists ON songplays.artist_id = artists.artist_id \
+   JOIN time ON songplays.start_time =  time.start_time \
+   JOIN users ON songplays.user_id = users.user_id \
+   LIMIT 5;
+   ```
+
+- How many male and female users are in the platform?
+
+```sql
+   SELECT count(user_id), gender FROM users GROUP BY gender;
+   ```
+
+- User distribution between paid subscription and free
+
+```sql
+   SELECT count(user_id), gender, level FROM users as U GROUP BY gender, U.level;
+   ```
+
+- What are the top user's listeners
+
+```sql
+SELECT  users.first_name, songplays.user_id, count(songplays.user_id) 
+FROM songplays 
+JOIN users ON songplays.user_id = users.user_id 
+GROUP BY songplays.user_id, users.first_name 
+ORDER BY count(songplays.user_id) DESC;
+```
 
 
 ## Project Structure
