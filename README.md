@@ -144,7 +144,7 @@ sql_queries.py to create the tables and database.
 4. Have a star schema, where we can start to get some data insights.
 
 ## Example Business Questions
-After having the star schema, we can now answer some business questions, please notice that here I cover few examples, but a data analyst may found more usefol data insights.
+After having the star schema, we can now answer some business questions, please notice that here I cover few examples, but a data analyst may found more useful data insights.
 
 - Example query to combine all the 5 tables:
 
