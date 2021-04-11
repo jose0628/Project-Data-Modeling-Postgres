@@ -25,6 +25,8 @@ def process_song_file(cur, filepath):
     artist_data = df.loc[:,['artist_id', 'artist_name', 'artist_location', 'artist_latitude', 'artist_longitude']].values[0].tolist()
     cur.execute(artist_table_insert, artist_data)
 
+    print(f"Records inserted for file {filepath}")
+
 
 def process_log_file(cur, filepath):
     """Process and load data from one log file to postgres
